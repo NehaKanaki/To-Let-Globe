@@ -4,7 +4,6 @@ const ejs = require('ejs');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const contactRoutes = require('./routes');
 require('dotenv').config();
 
 // Connect to MongoDB
@@ -15,6 +14,8 @@ const indexRoutes = require('./routes');
 
 // Middleware
 app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded({extended:false}));
 app.use(cors());
 app.engine("html",ejs.renderFile);
 app.set("view engine","html");
